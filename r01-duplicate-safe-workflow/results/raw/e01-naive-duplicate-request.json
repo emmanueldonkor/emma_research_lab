@@ -1,0 +1,67 @@
+{
+  "experiment": "E01-naive-handler",
+  "request_name": "weekly-report",
+  "requested_attempts": 5,
+  "observations": [
+    {
+      "attempt": 1,
+      "sent_at_utc": "2026-09-06T18:34:33.804148+00:00",
+      "response": {
+        "status": 201,
+        "body": {
+          "id": "28a23dd0-0d5b-408e-a4a3-122b8caedcef",
+          "name": "weekly-report",
+          "createdAtUtc": "2026-09-06T18:34:33.9433401+00:00"
+        }
+      }
+    },
+    {
+      "attempt": 2,
+      "sent_at_utc": "2026-09-06T18:34:34.213404+00:00",
+      "response": {
+        "status": 201,
+        "body": {
+          "id": "e51589f8-89ef-41dd-aba6-ed2a508c84dc",
+          "name": "weekly-report",
+          "createdAtUtc": "2026-09-06T18:34:34.2297223+00:00"
+        }
+      }
+    },
+    {
+      "attempt": 3,
+      "sent_at_utc": "2026-09-06T18:34:34.303973+00:00",
+      "response": {
+        "status": 201,
+        "body": {
+          "id": "d2910227-fd3f-4475-b35e-5dd28bc071bb",
+          "name": "weekly-report",
+          "createdAtUtc": "2026-09-06T18:34:34.3081683+00:00"
+        }
+      }
+    },
+    {
+      "attempt": 4,
+      "sent_at_utc": "2026-09-06T18:34:34.319105+00:00",
+      "response": {
+        "status": 201,
+        "body": {
+          "id": "b15b874c-782e-4d4c-823a-84c18b29f8cd",
+          "name": "weekly-report",
+          "createdAtUtc": "2026-09-06T18:34:34.323467+00:00"
+        }
+      }
+    },
+    {
+      "attempt": 5,
+      "sent_at_utc": "2026-09-06T18:34:34.331985+00:00",
+      "response": {
+        "status": 201,
+        "body": {
+          "id": "36c0e6ae-f211-4a2e-bf30-93ddc3454ca6",
+          "name": "weekly-report",
+          "createdAtUtc": "2026-09-06T18:34:34.3363448+00:00"
+        }
+      }
+    }
+  ]
+}
