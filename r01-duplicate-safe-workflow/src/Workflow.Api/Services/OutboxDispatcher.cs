@@ -7,10 +7,11 @@ public sealed class OutboxDispatcher(WorkflowDbContext database) : IOutboxDispat
 {
     public async Task<OutboxDispatchResult> DispatchPendingAsync(bool simulateFailure, CancellationToken cancellationToken)
     {
-        var messages = await database.OutboxMessages
+        var messages = (await database.OutboxMessages
             .Where(message => message.PublishedAtUtc == null)
+            .ToListAsync(cancellationToken))
             .OrderBy(message => message.CreatedAtUtc)
-            .ToListAsync(cancellationToken);
+            .ToList();
 
         var published = 0;
         var failed = 0;

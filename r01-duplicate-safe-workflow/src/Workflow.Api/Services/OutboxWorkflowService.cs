@@ -37,7 +37,10 @@ public sealed class OutboxWorkflowService(WorkflowDbContext database) : IOutboxW
 
     public async Task<IReadOnlyList<OutboxMessage>> ListAsync(bool includePublished, CancellationToken cancellationToken)
     {
-        var messages = database.OutboxMessages.AsNoTracking().OrderBy(message => message.CreatedAtUtc);
-        return await (includePublished ? messages : messages.Where(message => message.PublishedAtUtc == null)).ToListAsync(cancellationToken);
+        var messages = await (includePublished
+                ? database.OutboxMessages.AsNoTracking()
+                : database.OutboxMessages.AsNoTracking().Where(message => message.PublishedAtUtc == null))
+            .ToListAsync(cancellationToken);
+        return messages.OrderBy(message => message.CreatedAtUtc).ToList();
     }
 }
