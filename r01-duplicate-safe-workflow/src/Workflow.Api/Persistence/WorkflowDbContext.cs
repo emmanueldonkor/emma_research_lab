@@ -36,6 +36,8 @@ public sealed class WorkflowDbContext(DbContextOptions<WorkflowDbContext> option
         outbox.Property(message => message.EventType).HasMaxLength(100).IsRequired();
         outbox.Property(message => message.Payload).IsRequired();
         outbox.Property(message => message.CreatedAtUtc).IsRequired();
+        outbox.Property(message => message.DeliveryAttempts).IsRequired();
+        outbox.Property(message => message.LastError);
         outbox.HasIndex(message => message.PublishedAtUtc);
         outbox.HasOne(message => message.Workflow)
             .WithMany()

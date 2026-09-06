@@ -8,7 +8,7 @@ public static class OutboxWorkflowEndpoints
     public static IEndpointRouteBuilder MapOutboxWorkflowEndpoints(this IEndpointRouteBuilder endpoints)
     {
         endpoints.MapPost("/outbox-workflows", CreateAsync);
-        endpoints.MapGet("/outbox-messages", ListPendingAsync);
+        endpoints.MapGet("/outbox-messages", ListAsync);
         return endpoints;
     }
 
@@ -29,6 +29,6 @@ public static class OutboxWorkflowEndpoints
             : Results.StatusCode(StatusCodes.Status503ServiceUnavailable);
     }
 
-    private static async Task<IResult> ListPendingAsync(IOutboxWorkflowService workflows, CancellationToken cancellationToken) =>
-        Results.Ok(await workflows.ListPendingAsync(cancellationToken));
+    private static async Task<IResult> ListAsync(bool includePublished, IOutboxWorkflowService workflows, CancellationToken cancellationToken) =>
+        Results.Ok(await workflows.ListAsync(includePublished, cancellationToken));
 }

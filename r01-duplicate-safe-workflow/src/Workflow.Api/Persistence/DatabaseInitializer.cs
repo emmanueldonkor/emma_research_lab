@@ -20,6 +20,10 @@ public static class DatabaseInitializer
             );
             """, cancellationToken);
         await database.Database.ExecuteSqlRawAsync("""
+            ALTER TABLE outbox_messages ADD COLUMN IF NOT EXISTS "DeliveryAttempts" integer NOT NULL DEFAULT 0;
+            ALTER TABLE outbox_messages ADD COLUMN IF NOT EXISTS "LastError" text NULL;
+            """, cancellationToken);
+        await database.Database.ExecuteSqlRawAsync("""
             CREATE TABLE IF NOT EXISTS outbox_messages (
                 "Id" uuid NOT NULL,
                 "WorkflowId" uuid NOT NULL,

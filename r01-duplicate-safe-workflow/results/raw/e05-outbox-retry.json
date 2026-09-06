@@ -1,0 +1,25 @@
+{
+  "experiment": "E05-outbox-retry",
+  "run_date": "2026-09-06",
+  "target": {
+    "workflow_name": "retryable-notification",
+    "workflow_id": "5937837c-9765-40fb-a56e-7718b1361241",
+    "outbox_message_id": "13064284-c14f-4202-9101-f74da75cc16f"
+  },
+  "failure_dispatch": {
+    "pending_messages_processed": 2,
+    "published": 0,
+    "failed": 2,
+    "target_published_at_utc": null,
+    "target_delivery_attempts": 1,
+    "target_last_error": "Simulated destination unavailable."
+  },
+  "retry_dispatch": {
+    "pending_messages_processed": 2,
+    "published": 2,
+    "failed": 0,
+    "target_published_at_utc": "2026-09-06T18:58:09.168073+00:00",
+    "target_delivery_attempts": 2,
+    "target_last_error": null
+  }
+}

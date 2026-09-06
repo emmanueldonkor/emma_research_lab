@@ -15,4 +15,8 @@ public sealed class OutboxMessage
     public DateTimeOffset CreatedAtUtc { get; init; }
 
     public DateTimeOffset? PublishedAtUtc { get; set; }
+
+    public int DeliveryAttempts { get; set; }
+
+    public string? LastError { get; set; }
 }
