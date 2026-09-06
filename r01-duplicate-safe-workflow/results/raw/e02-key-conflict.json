@@ -1,0 +1,13 @@
+{
+  "experiment": "E02-idempotency-key",
+  "run_date": "2026-09-06",
+  "idempotency_key": "e02-monthly-invoice-001",
+  "original_request_name": "monthly-invoice",
+  "conflicting_request_name": "different-invoice",
+  "response": {
+    "status": 409,
+    "body": {
+      "error": "Idempotency-Key has already been used with a different request body."
+    }
+  }
+}
