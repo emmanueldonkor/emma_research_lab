@@ -9,6 +9,8 @@ public sealed class WorkflowDbContext(DbContextOptions<WorkflowDbContext> option
 
     public DbSet<IdempotencyRecord> IdempotencyRecords => Set<IdempotencyRecord>();
 
+    public DbSet<OutboxMessage> OutboxMessages => Set<OutboxMessage>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         var workflow = modelBuilder.Entity<WorkflowRecord>();
@@ -26,6 +28,18 @@ public sealed class WorkflowDbContext(DbContextOptions<WorkflowDbContext> option
         idempotency.HasOne(record => record.Workflow)
             .WithMany()
             .HasForeignKey(record => record.WorkflowId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        var outbox = modelBuilder.Entity<OutboxMessage>();
+        outbox.ToTable("outbox_messages");
+        outbox.HasKey(message => message.Id);
+        outbox.Property(message => message.EventType).HasMaxLength(100).IsRequired();
+        outbox.Property(message => message.Payload).IsRequired();
+        outbox.Property(message => message.CreatedAtUtc).IsRequired();
+        outbox.HasIndex(message => message.PublishedAtUtc);
+        outbox.HasOne(message => message.Workflow)
+            .WithMany()
+            .HasForeignKey(message => message.WorkflowId)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }

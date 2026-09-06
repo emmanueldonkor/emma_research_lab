@@ -19,5 +19,20 @@ public static class DatabaseInitializer
                     FOREIGN KEY ("WorkflowId") REFERENCES workflow_records ("Id") ON DELETE RESTRICT
             );
             """, cancellationToken);
+        await database.Database.ExecuteSqlRawAsync("""
+            CREATE TABLE IF NOT EXISTS outbox_messages (
+                "Id" uuid NOT NULL,
+                "WorkflowId" uuid NOT NULL,
+                "EventType" character varying(100) NOT NULL,
+                "Payload" text NOT NULL,
+                "CreatedAtUtc" timestamp with time zone NOT NULL,
+                "PublishedAtUtc" timestamp with time zone NULL,
+                CONSTRAINT "PK_outbox_messages" PRIMARY KEY ("Id"),
+                CONSTRAINT "FK_outbox_messages_workflow_records_WorkflowId"
+                    FOREIGN KEY ("WorkflowId") REFERENCES workflow_records ("Id") ON DELETE RESTRICT
+            );
+            CREATE INDEX IF NOT EXISTS "IX_outbox_messages_PublishedAtUtc"
+                ON outbox_messages ("PublishedAtUtc");
+            """, cancellationToken);
     }
 }

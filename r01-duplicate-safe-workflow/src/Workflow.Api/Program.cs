@@ -10,6 +10,7 @@ var connectionString = builder.Configuration.GetConnectionString("WorkflowDataba
 
 builder.Services.AddDbContext<WorkflowDbContext>(options => options.UseNpgsql(connectionString));
 builder.Services.AddScoped<IWorkflowService, WorkflowService>();
+builder.Services.AddScoped<IOutboxWorkflowService, OutboxWorkflowService>();
 
 var app = builder.Build();
 
@@ -17,5 +18,6 @@ await DatabaseInitializer.InitializeAsync(app.Services);
 
 app.MapGet("/health", () => Results.Ok(new { status = "ok" }));
 app.MapWorkflowEndpoints();
+app.MapOutboxWorkflowEndpoints();
 
 app.Run();

@@ -1,0 +1,24 @@
+{
+  "experiment": "E03-transactional-outbox",
+  "run_date": "2026-09-06",
+  "committed_request": {
+    "name": "contract-renewal",
+    "workflow_id": "268d5e42-8e84-49c5-9acc-cc480f9e3b4c",
+    "outbox_message_id": "17b4f594-70eb-4723-9b07-13a236037547",
+    "status": 201
+  },
+  "after_commit": {
+    "pending_outbox_messages": 1,
+    "committed_workflow_present": true
+  },
+  "controlled_rollback_request": {
+    "name": "rollback-check",
+    "simulate_rollback": true,
+    "status": 503
+  },
+  "after_rollback": {
+    "pending_outbox_messages": 1,
+    "rollback_workflow_present": false,
+    "rollback_outbox_message_present": false
+  }
+}
