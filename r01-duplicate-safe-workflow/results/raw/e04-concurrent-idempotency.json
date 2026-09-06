@@ -1,0 +1,216 @@
+{
+  "experiment": "E04-concurrent-idempotency",
+  "started_at_utc": "2026-09-06T18:55:26.811397+00:00",
+  "request_name": "concurrent-settlement",
+  "idempotency_key": "e04-concurrent-d8f0911d0c7d451f8772e20622a7ecbd",
+  "concurrent_requests": 20,
+  "status_counts": {
+    "200": 19,
+    "201": 1
+  },
+  "distinct_workflow_ids": [
+    "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50"
+  ],
+  "observations": [
+    {
+      "attempt": 1,
+      "status": 200,
+      "elapsed_ms": 2217.66,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+      }
+    },
+    {
+      "attempt": 2,
+      "status": 200,
+      "elapsed_ms": 2055.93,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+      }
+    },
+    {
+      "attempt": 3,
+      "status": 200,
+      "elapsed_ms": 2130.75,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+      }
+    },
+    {
+      "attempt": 4,
+      "status": 200,
+      "elapsed_ms": 2206.83,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+      }
+    },
+    {
+      "attempt": 5,
+      "status": 200,
+      "elapsed_ms": 2185.83,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+      }
+    },
+    {
+      "attempt": 6,
+      "status": 200,
+      "elapsed_ms": 2014.51,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+      }
+    },
+    {
+      "attempt": 7,
+      "status": 200,
+      "elapsed_ms": 2223.89,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+      }
+    },
+    {
+      "attempt": 8,
+      "status": 200,
+      "elapsed_ms": 2122.02,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+      }
+    },
+    {
+      "attempt": 9,
+      "status": 200,
+      "elapsed_ms": 2216.11,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+      }
+    },
+    {
+      "attempt": 10,
+      "status": 200,
+      "elapsed_ms": 2215.49,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+      }
+    },
+    {
+      "attempt": 11,
+      "status": 200,
+      "elapsed_ms": 2189.71,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+      }
+    },
+    {
+      "attempt": 12,
+      "status": 200,
+      "elapsed_ms": 2216.27,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+      }
+    },
+    {
+      "attempt": 13,
+      "status": 201,
+      "elapsed_ms": 1945.62,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.6834309+00:00"
+      }
+    },
+    {
+      "attempt": 14,
+      "status": 200,
+      "elapsed_ms": 2177.6,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+      }
+    },
+    {
+      "attempt": 15,
+      "status": 200,
+      "elapsed_ms": 2188.28,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+      }
+    },
+    {
+      "attempt": 16,
+      "status": 200,
+      "elapsed_ms": 2168.86,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+      }
+    },
+    {
+      "attempt": 17,
+      "status": 200,
+      "elapsed_ms": 2220.3,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+      }
+    },
+    {
+      "attempt": 18,
+      "status": 200,
+      "elapsed_ms": 2146.44,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+      }
+    },
+    {
+      "attempt": 19,
+      "status": 200,
+      "elapsed_ms": 2180.13,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+      }
+    },
+    {
+      "attempt": 20,
+      "status": 200,
+      "elapsed_ms": 2222.58,
+      "body": {
+        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "name": "concurrent-settlement",
+        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+      }
+    }
+  ]
+}
