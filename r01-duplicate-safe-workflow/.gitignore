@@ -1,0 +1,9 @@
+bin/
+obj/
+.env
+results/raw/*.csv
+results/raw/*.json
+!results/raw/.gitkeep
+__pycache__/
+.pytest_cache/
+.venv/

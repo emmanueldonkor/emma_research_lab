@@ -1,0 +1,19 @@
+services:
+  database:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: workflow_lab
+      POSTGRES_USER: workflow
+      POSTGRES_PASSWORD: workflow_dev_password
+    ports:
+      - "5433:5432"
+    volumes:
+      - workflow-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U workflow -d workflow_lab"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  workflow-postgres-data:
