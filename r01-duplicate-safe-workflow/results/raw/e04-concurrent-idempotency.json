@@ -1,215 +1,215 @@
 {
   "experiment": "E04-concurrent-idempotency",
-  "started_at_utc": "2026-09-06T18:55:26.811397+00:00",
+  "started_at_utc": "2026-09-06T19:11:33.247214+00:00",
   "request_name": "concurrent-settlement",
-  "idempotency_key": "e04-concurrent-d8f0911d0c7d451f8772e20622a7ecbd",
+  "idempotency_key": "e04-concurrent-dc6af41538aa45d5bde3b4c1c75e05a8",
   "concurrent_requests": 20,
   "status_counts": {
     "200": 19,
     "201": 1
   },
   "distinct_workflow_ids": [
-    "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50"
+    "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399"
   ],
   "observations": [
     {
       "attempt": 1,
       "status": 200,
-      "elapsed_ms": 2217.66,
+      "elapsed_ms": 1786.97,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.949951+00:00"
       }
     },
     {
       "attempt": 2,
       "status": 200,
-      "elapsed_ms": 2055.93,
+      "elapsed_ms": 1936.82,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.949951+00:00"
       }
     },
     {
       "attempt": 3,
       "status": 200,
-      "elapsed_ms": 2130.75,
+      "elapsed_ms": 1781.89,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.949951+00:00"
       }
     },
     {
       "attempt": 4,
       "status": 200,
-      "elapsed_ms": 2206.83,
+      "elapsed_ms": 2024.32,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.949951+00:00"
       }
     },
     {
       "attempt": 5,
       "status": 200,
-      "elapsed_ms": 2185.83,
+      "elapsed_ms": 1889.72,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.949951+00:00"
       }
     },
     {
       "attempt": 6,
       "status": 200,
-      "elapsed_ms": 2014.51,
+      "elapsed_ms": 1839.37,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.949951+00:00"
       }
     },
     {
       "attempt": 7,
       "status": 200,
-      "elapsed_ms": 2223.89,
+      "elapsed_ms": 1936.67,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.949951+00:00"
       }
     },
     {
       "attempt": 8,
       "status": 200,
-      "elapsed_ms": 2122.02,
+      "elapsed_ms": 1918.66,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.949951+00:00"
       }
     },
     {
       "attempt": 9,
       "status": 200,
-      "elapsed_ms": 2216.11,
+      "elapsed_ms": 1714.42,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.949951+00:00"
       }
     },
     {
       "attempt": 10,
       "status": 200,
-      "elapsed_ms": 2215.49,
+      "elapsed_ms": 1930.81,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.949951+00:00"
       }
     },
     {
       "attempt": 11,
       "status": 200,
-      "elapsed_ms": 2189.71,
+      "elapsed_ms": 1738.26,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.949951+00:00"
       }
     },
     {
       "attempt": 12,
       "status": 200,
-      "elapsed_ms": 2216.27,
+      "elapsed_ms": 1838.92,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.949951+00:00"
       }
     },
     {
       "attempt": 13,
-      "status": 201,
-      "elapsed_ms": 1945.62,
+      "status": 200,
+      "elapsed_ms": 1935.69,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.6834309+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.949951+00:00"
       }
     },
     {
       "attempt": 14,
       "status": 200,
-      "elapsed_ms": 2177.6,
+      "elapsed_ms": 1854.72,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.949951+00:00"
       }
     },
     {
       "attempt": 15,
       "status": 200,
-      "elapsed_ms": 2188.28,
+      "elapsed_ms": 1900.99,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.949951+00:00"
       }
     },
     {
       "attempt": 16,
       "status": 200,
-      "elapsed_ms": 2168.86,
+      "elapsed_ms": 1800.32,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.949951+00:00"
       }
     },
     {
       "attempt": 17,
       "status": 200,
-      "elapsed_ms": 2220.3,
+      "elapsed_ms": 1911.06,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.949951+00:00"
       }
     },
     {
       "attempt": 18,
-      "status": 200,
-      "elapsed_ms": 2146.44,
+      "status": 201,
+      "elapsed_ms": 1702.43,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.9499513+00:00"
       }
     },
     {
       "attempt": 19,
       "status": 200,
-      "elapsed_ms": 2180.13,
+      "elapsed_ms": 1773.17,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.949951+00:00"
       }
     },
     {
       "attempt": 20,
       "status": 200,
-      "elapsed_ms": 2222.58,
+      "elapsed_ms": 1947.19,
       "body": {
-        "id": "cb9c1bc4-76d6-40d4-a2ab-8a56e8b9fe50",
+        "id": "ecfe7e13-b0c9-48e7-bb1e-ffa5c293b399",
         "name": "concurrent-settlement",
-        "createdAtUtc": "2026-09-06T18:55:28.68343+00:00"
+        "createdAtUtc": "2026-09-06T19:11:34.949951+00:00"
       }
     }
   ]

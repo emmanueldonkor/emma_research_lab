@@ -21,3 +21,7 @@ dotnet test tests/Workflow.Api.Tests/Workflow.Api.Tests.csproj
 ```
 
 The suite uses an isolated in-memory SQLite database and checks the E01 duplicate baseline, E02 idempotency reuse and conflict handling, E03 rollback boundary, and E05 retry state transition. PostgreSQL-backed experiment scripts remain the evidence for the recorded local runs.
+
+## Clean-database verification
+
+The full workflow was rerun from a newly created Docker volume on 2026-09-06. The resulting verification record is `results/raw/clean-database-verification.json`.

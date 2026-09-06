@@ -1,0 +1,28 @@
+{
+  "verification_date": "2026-09-06",
+  "database_reset": "docker compose down -v followed by docker compose up -d --wait database",
+  "automated_tests": {
+    "command": "dotnet test tests/Workflow.Api.Tests/Workflow.Api.Tests.csproj",
+    "passed": 5,
+    "failed": 0
+  },
+  "experiment_checks": {
+    "E01": "Five sequential unkeyed submissions returned five created records.",
+    "E02": "Five sequential keyed submissions returned one creation and four replays for one workflow.",
+    "E03": "A committed workflow/outbox pair persisted; the controlled rollback returned 503 and did not persist its workflow.",
+    "E04": "Twenty concurrent keyed submissions returned one 201, nineteen 200 responses, and one workflow identifier.",
+    "E05": {
+      "outbox_message_id": "c96b221f-f854-4b53-8029-77c141b215d7",
+      "after_controlled_failure": {
+        "published_at_utc": null,
+        "delivery_attempts": 1,
+        "last_error": "Simulated destination unavailable."
+      },
+      "after_retry": {
+        "published_at_utc": "2026-09-06T19:12:45.648320+00:00",
+        "delivery_attempts": 2,
+        "last_error": null
+      }
+    }
+  }
+}
