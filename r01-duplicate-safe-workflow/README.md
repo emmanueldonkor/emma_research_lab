@@ -44,3 +44,4 @@ The API health check will be available at `http://localhost:8080/health`.
 - `scripts/` — repeatable request runners
 - `src/Workflow.Api/` — service implementation
 - `tests/Workflow.Api.Tests/` — five automated invariant tests
+- `diagrams/` — architecture, idempotency replay, and outbox retry diagrams

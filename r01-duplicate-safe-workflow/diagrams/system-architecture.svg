@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
+  <title id="title">R01 duplicate-safe workflow service architecture</title>
+  <desc id="desc">A client calls workflow endpoints. The API uses workflow and outbox services backed by PostgreSQL workflow, idempotency, and outbox tables. A controlled dispatcher reads pending outbox messages and marks them published.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#526078"/></marker></defs>
+  <rect width="960" height="560" fill="#fbfcfe"/>
+  <text x="48" y="46" fill="#172033" font-family="Arial, sans-serif" font-size="23" font-weight="700">R01 — implemented local architecture</text>
+  <text x="48" y="70" fill="#526078" font-family="Arial, sans-serif" font-size="13">Workflow creation, idempotency storage, transactional outbox, and controlled dispatch</text>
+  <g font-family="Arial, sans-serif">
+    <rect x="48" y="215" width="150" height="88" rx="8" fill="#eef3fb" stroke="#6681a8"/>
+    <text x="123" y="250" text-anchor="middle" fill="#172033" font-size="16" font-weight="700">Client / runner</text>
+    <text x="123" y="274" text-anchor="middle" fill="#526078" font-size="12">E01, E02, E04 scripts</text>
+    <rect x="275" y="126" width="244" height="260" rx="10" fill="#ffffff" stroke="#6681a8" stroke-width="1.5"/>
+    <text x="397" y="157" text-anchor="middle" fill="#172033" font-size="17" font-weight="700">Workflow.Api</text>
+    <rect x="300" y="178" width="194" height="54" rx="6" fill="#f4f7fb" stroke="#b9c6d9"/>
+    <text x="397" y="201" text-anchor="middle" fill="#172033" font-size="13" font-weight="700">Workflow endpoints</text>
+    <text x="397" y="220" text-anchor="middle" fill="#526078" font-size="11">POST /workflows</text>
+    <rect x="300" y="252" width="194" height="54" rx="6" fill="#f4f7fb" stroke="#b9c6d9"/>
+    <text x="397" y="275" text-anchor="middle" fill="#172033" font-size="13" font-weight="700">Outbox endpoints</text>
+    <text x="397" y="294" text-anchor="middle" fill="#526078" font-size="11">POST /outbox-workflows</text>
+    <rect x="300" y="326" width="194" height="36" rx="6" fill="#f4f7fb" stroke="#b9c6d9"/>
+    <text x="397" y="349" text-anchor="middle" fill="#172033" font-size="12">POST /outbox-dispatch</text>
+    <rect x="610" y="105" width="292" height="315" rx="10" fill="#f8faf7" stroke="#6b9074" stroke-width="1.5"/>
+    <text x="756" y="138" text-anchor="middle" fill="#172033" font-size="17" font-weight="700">PostgreSQL 17</text>
+    <rect x="638" y="165" width="236" height="57" rx="6" fill="#ffffff" stroke="#b5c9b8"/>
+    <text x="756" y="189" text-anchor="middle" fill="#172033" font-size="13" font-weight="700">workflow_records</text>
+    <text x="756" y="208" text-anchor="middle" fill="#526078" font-size="11">workflow state</text>
+    <rect x="638" y="240" width="236" height="57" rx="6" fill="#ffffff" stroke="#b5c9b8"/>
+    <text x="756" y="264" text-anchor="middle" fill="#172033" font-size="13" font-weight="700">idempotency_records</text>
+    <text x="756" y="283" text-anchor="middle" fill="#526078" font-size="11">unique key + request fingerprint</text>
+    <rect x="638" y="315" width="236" height="80" rx="6" fill="#ffffff" stroke="#b5c9b8"/>
+    <text x="756" y="339" text-anchor="middle" fill="#172033" font-size="13" font-weight="700">outbox_messages</text>
+    <text x="756" y="358" text-anchor="middle" fill="#526078" font-size="11">pending event, attempts, error</text>
+    <text x="756" y="376" text-anchor="middle" fill="#526078" font-size="11">published timestamp</text>
+    <rect x="325" y="462" width="260" height="55" rx="8" fill="#fff8e8" stroke="#c89d4c"/>
+    <text x="455" y="485" text-anchor="middle" fill="#172033" font-size="14" font-weight="700">Controlled dispatcher</text>
+    <text x="455" y="504" text-anchor="middle" fill="#526078" font-size="11">E05 failure / retry state transition</text>
+  </g>
+  <g stroke="#526078" stroke-width="1.7" fill="none" marker-end="url(#arrow)">
+    <path d="M198 259 L275 259"/><path d="M519 205 L610 193"/><path d="M519 279 L610 270"/><path d="M519 290 L610 350"/><path d="M455 462 L455 386 L610 356"/>
+  </g>
+  <text x="539" y="446" fill="#526078" font-family="Arial, sans-serif" font-size="11">reads pending, records attempt, marks published on controlled acknowledgement</text>
+  <text x="48" y="535" fill="#526078" font-family="Arial, sans-serif" font-size="11">Scope: local service and database only; no external broker or distributed deployment is represented.</text>
+</svg>

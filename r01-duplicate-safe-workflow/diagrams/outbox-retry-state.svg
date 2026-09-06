@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="450" viewBox="0 0 960 450" role="img" aria-labelledby="title desc">
+  <title id="title">Transactional outbox commit and retry states</title>
+  <desc id="desc">A workflow and pending outbox event are written in one transaction. A controlled rollback persists neither. A dispatcher failure leaves the event pending with an error and attempt count. A retry marks it published.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#526078"/></marker></defs>
+  <rect width="960" height="450" fill="#fbfcfe"/>
+  <text x="48" y="45" fill="#172033" font-family="Arial, sans-serif" font-size="23" font-weight="700">Transactional outbox and retry states — E03, E05</text>
+  <text x="48" y="69" fill="#526078" font-family="Arial, sans-serif" font-size="13">Controlled local transitions; publication is an in-process acknowledgement, not an external broker.</text>
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <rect x="48" y="146" width="205" height="105" rx="9" fill="#eef3fb" stroke="#6681a8"/><text x="150" y="177" fill="#172033" font-size="15" font-weight="700">Single transaction</text><text x="150" y="201" fill="#526078" font-size="12">workflow record +</text><text x="150" y="220" fill="#526078" font-size="12">pending outbox message</text>
+    <polygon points="315,164 405,164 435,194 405,224 315,224 285,194" fill="#ffffff" stroke="#6681a8"/><text x="360" y="190" fill="#172033" font-size="13" font-weight="700">Commit?</text>
+    <rect x="492" y="111" width="205" height="105" rx="9" fill="#ecf7f1" stroke="#5c997c"/><text x="594" y="142" fill="#172033" font-size="15" font-weight="700">Pending</text><text x="594" y="166" fill="#526078" font-size="12">publishedAt = null</text><text x="594" y="185" fill="#526078" font-size="12">deliveryAttempts = 0</text>
+    <rect x="492" y="292" width="205" height="105" rx="9" fill="#fff4e8" stroke="#c98d45"/><text x="594" y="323" fill="#172033" font-size="15" font-weight="700">Failure retained</text><text x="594" y="347" fill="#526078" font-size="12">still pending; attempts +1</text><text x="594" y="366" fill="#526078" font-size="12">lastError recorded</text>
+    <rect x="755" y="202" width="157" height="105" rx="9" fill="#ecf7f1" stroke="#5c997c"/><text x="833" y="233" fill="#172033" font-size="15" font-weight="700">Published</text><text x="833" y="257" fill="#526078" font-size="12">publishedAt set</text><text x="833" y="276" fill="#526078" font-size="12">error cleared</text>
+    <rect x="48" y="315" width="205" height="70" rx="9" fill="#fff0f0" stroke="#c76a6a"/><text x="150" y="344" fill="#172033" font-size="14" font-weight="700">Controlled rollback</text><text x="150" y="365" fill="#526078" font-size="12">0 workflow, 0 outbox rows</text>
+  </g>
+  <g stroke="#526078" stroke-width="1.7" fill="none" marker-end="url(#arrow)"><path d="M253 194 L285 194"/><path d="M435 194 L492 164"/><path d="M360 224 L360 350 L253 350"/><path d="M594 216 L594 292"/><path d="M697 344 L755 270"/><path d="M697 164 L755 239"/></g>
+  <g fill="#526078" font-family="Arial, sans-serif" font-size="12"><text x="454" y="164">yes</text><text x="372" y="270">no</text><text x="612" y="260">controlled failure</text><text x="715" y="298">retry succeeds</text><text x="705" y="192">successful dispatch</text></g>
+  <text x="48" y="423" fill="#526078" font-family="Arial, sans-serif" font-size="11">The E03 claim is transactional alignment; the E05 claim is durable retry state. Neither claim is exactly-once external delivery.</text>
+</svg>
