@@ -2,12 +2,14 @@
 
 ## Working question
 
-How do idempotency keys and a transactional outbox change the correctness and recovery behaviour of a workflow service when requests are retried or processes fail?
+How do idempotency keys and a transactional outbox change the duplicate and recovery behaviour of a workflow service under controlled retries and failures?
 
 ## Scope
 
-The service will accept workflow requests, persist them in PostgreSQL, and eventually publish a corresponding event. Experiments will introduce retries, lost responses, and controlled process failures.
+The service accepts workflow requests, persists them in PostgreSQL, and stages a corresponding event in an outbox. The completed experiments cover sequential and concurrent retries, controlled transaction rollback, and controlled dispatch failure/retry.
+
+This scope excludes an external broker, multi-instance deployment, and actual process termination during a commit or dispatch.
 
 ## Claims policy
 
-This document will distinguish planned work, observed output, and interpretation. Results are not added until a repeatable run produces them.
+This document distinguishes controlled observation from broader claims. Raw output and run summaries are stored under `results/`; the comparison table is `results/tables/experiment-comparison.md`.

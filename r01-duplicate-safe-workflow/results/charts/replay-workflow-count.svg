@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="340" viewBox="0 0 720 340" role="img" aria-labelledby="title desc">
+  <title id="title">Persisted workflow records after repeated logical requests</title>
+  <desc id="desc">E01 created five records from five unkeyed requests. E02 created one record from five keyed requests. E04 created one record from twenty concurrent keyed requests.</desc>
+  <rect width="720" height="340" fill="#ffffff"/>
+  <text x="54" y="38" fill="#172033" font-family="Arial, sans-serif" font-size="20" font-weight="700">Persisted workflow records per logical request</text>
+  <text x="54" y="62" fill="#526078" font-family="Arial, sans-serif" font-size="12">Local recorded runs; lower is safer for replayed work</text>
+  <line x1="80" y1="275" x2="680" y2="275" stroke="#aeb8c8"/><line x1="80" y1="88" x2="80" y2="275" stroke="#aeb8c8"/>
+  <g fill="#526078" font-family="Arial, sans-serif" font-size="12"><text x="62" y="279">0</text><text x="62" y="242">1</text><text x="62" y="205">2</text><text x="62" y="168">3</text><text x="62" y="131">4</text><text x="62" y="94">5</text></g>
+  <g stroke="#e2e7ef" stroke-width="1"><line x1="80" y1="238" x2="680" y2="238"/><line x1="80" y1="201" x2="680" y2="201"/><line x1="80" y1="164" x2="680" y2="164"/><line x1="80" y1="127" x2="680" y2="127"/><line x1="80" y1="90" x2="680" y2="90"/></g>
+  <rect x="150" y="90" width="110" height="185" rx="4" fill="#d35454"/><rect x="355" y="238" width="110" height="37" rx="4" fill="#247a63"/><rect x="560" y="238" width="110" height="37" rx="4" fill="#247a63"/>
+  <g fill="#172033" font-family="Arial, sans-serif" font-size="14" font-weight="700"><text x="199" y="82">5</text><text x="404" y="230">1</text><text x="609" y="230">1</text></g>
+  <g fill="#172033" font-family="Arial, sans-serif" font-size="13" text-anchor="middle"><text x="205" y="303">E01</text><text x="410" y="303">E02</text><text x="615" y="303">E04</text></g>
+  <g fill="#526078" font-family="Arial, sans-serif" font-size="11" text-anchor="middle"><text x="205" y="321">5 unkeyed, sequential</text><text x="410" y="321">5 keyed, sequential</text><text x="615" y="321">20 keyed, concurrent</text></g>
+</svg>
