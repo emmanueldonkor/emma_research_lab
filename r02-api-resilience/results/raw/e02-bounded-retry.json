@@ -1,0 +1,20 @@
+{
+  "experiment": "E02-bounded-retry",
+  "run_date": "2026-09-07",
+  "policy": {
+    "max_attempts": 3,
+    "delay_milliseconds_between_attempts": 50,
+    "retry_scope": "safe GET requests returning 5xx"
+  },
+  "unavailable_condition": {
+    "gateway_status": 503,
+    "gateway_attempt_count": 3,
+    "gateway_elapsed_milliseconds": 231,
+    "dependency_calls": 3
+  },
+  "healthy_condition": {
+    "gateway_status": 200,
+    "gateway_attempt_count": 1,
+    "dependency_calls": 1
+  }
+}
