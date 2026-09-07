@@ -1,0 +1,26 @@
+{
+  "experiment": "E05-concurrency-limit",
+  "run_date": "2026-09-07",
+  "configuration": {
+    "callers": 6,
+    "dependency_mode": "Slow",
+    "dependency_delay_milliseconds": 500,
+    "concurrency_limit": 2,
+    "queue": "none"
+  },
+  "baseline": {
+    "statuses": [200, 200, 200, 200, 200, 200],
+    "caller_elapsed_milliseconds": [1090, 1095, 1093, 1093, 1090, 1093],
+    "dependency_request_count_before": 0,
+    "dependency_request_count_after": 6
+  },
+  "limited": {
+    "statuses": [429, 200, 429, 429, 429, 200],
+    "caller_elapsed_milliseconds": [480, 980, 481, 481, 481, 985],
+    "admitted_gateway_elapsed_milliseconds": [503, 507],
+    "rejected_gateway_elapsed_milliseconds": [0, 0, 0, 0],
+    "rejected_dependency_attempt_count": [0, 0, 0, 0],
+    "dependency_request_count_before": 6,
+    "dependency_request_count_after": 8
+  }
+}

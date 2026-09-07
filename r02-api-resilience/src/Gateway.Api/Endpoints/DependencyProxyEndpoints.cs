@@ -11,6 +11,7 @@ public static class DependencyProxyEndpoints
         endpoints.MapGet("/proxy/retry", CallRetryAsync);
         endpoints.MapGet("/proxy/timeout", CallTimeoutAsync);
         endpoints.MapGet("/proxy/circuit", CallCircuitAsync);
+        endpoints.MapGet("/proxy/limited", CallLimitedAsync);
         return endpoints;
     }
 
@@ -38,6 +39,23 @@ public static class DependencyProxyEndpoints
             remainingBreakMilliseconds = result.Snapshot.RemainingBreakMilliseconds,
             shortCircuited = result.ShortCircuited,
             dependencyStatus = result.ShortCircuited ? (int?)null : call.StatusCode,
+            dependencyAttemptCount = call.AttemptCount,
+            elapsedMilliseconds = call.ElapsedMilliseconds,
+            response = call.Body is null ? (JsonElement?)null : JsonSerializer.Deserialize<JsonElement>(call.Body),
+            error = call.Error
+        }, statusCode: call.StatusCode);
+    }
+
+    private static async Task<IResult> CallLimitedAsync(IDependencyGateway gateway, CancellationToken cancellationToken)
+    {
+        var result = await gateway.CallWithConcurrencyLimitAsync(cancellationToken);
+        var call = result.Call;
+        return Results.Json(new
+        {
+            concurrencyLimit = result.Snapshot.Limit,
+            activeRequestsAtAdmission = result.Snapshot.ActiveRequests,
+            rejected = result.Rejected,
+            dependencyStatus = result.Rejected ? (int?)null : call.StatusCode,
             dependencyAttemptCount = call.AttemptCount,
             elapsedMilliseconds = call.ElapsedMilliseconds,
             response = call.Body is null ? (JsonElement?)null : JsonSerializer.Deserialize<JsonElement>(call.Body),

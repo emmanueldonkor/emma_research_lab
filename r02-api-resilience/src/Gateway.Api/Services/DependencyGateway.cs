@@ -2,7 +2,10 @@ using System.Diagnostics;
 
 namespace Gateway.Api.Services;
 
-public sealed class DependencyGateway(IHttpClientFactory clients, IFailureCircuitBreaker circuitBreaker) : IDependencyGateway
+public sealed class DependencyGateway(
+    IHttpClientFactory clients,
+    IFailureCircuitBreaker circuitBreaker,
+    IConcurrencyLimiter concurrencyLimiter) : IDependencyGateway
 {
     public Task<DependencyCallResult> CallBaselineAsync(CancellationToken cancellationToken) =>
         CallOnceAsync(cancellationToken);
@@ -64,6 +67,34 @@ public sealed class DependencyGateway(IHttpClientFactory clients, IFailureCircui
         var result = await CallOnceAsync(cancellationToken);
         var snapshot = circuitBreaker.RecordOutcome(result.StatusCode < StatusCodes.Status500InternalServerError);
         return new CircuitCallResult(result, snapshot, ShortCircuited: false);
+    }
+
+    public async Task<ConcurrencyCallResult> CallWithConcurrencyLimitAsync(CancellationToken cancellationToken)
+    {
+        var permit = concurrencyLimiter.TryAcquire();
+        if (!permit.Allowed)
+        {
+            return new ConcurrencyCallResult(
+                new DependencyCallResult(
+                    StatusCodes.Status429TooManyRequests,
+                    0,
+                    0,
+                    Error: "Gateway concurrency limit reached; dependency call was skipped."),
+                permit.Snapshot,
+                Rejected: true);
+        }
+
+        try
+        {
+            return new ConcurrencyCallResult(
+                await CallOnceAsync(cancellationToken),
+                permit.Snapshot,
+                Rejected: false);
+        }
+        finally
+        {
+            concurrencyLimiter.Release();
+        }
     }
 
     private async Task<DependencyCallResult> CallOnceAsync(CancellationToken cancellationToken)

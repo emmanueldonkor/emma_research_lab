@@ -2,7 +2,7 @@
 
 ## Status
 
-E01 through E04 have a first recorded local run. E05 remains planned.
+E01 through E05 have a first recorded local run.
 
 ## Question
 

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="340" viewBox="0 0 960 340" role="img" aria-labelledby="title description">
+  <title id="title">E05 direct forwarding compared with a two-permit concurrency limit</title>
+  <desc id="description">Six callers create six slow dependency requests without a limit. With two permits and no queue, two requests proceed and four receive 429 before reaching the dependency.</desc>
+  <style>
+    .heading { font: 700 20px system-ui, sans-serif; fill: #172033; }
+    .label { font: 600 15px system-ui, sans-serif; fill: #172033; }
+    .small { font: 14px system-ui, sans-serif; fill: #334155; }
+    .caller { fill: #e8eef9; stroke: #315b93; stroke-width: 1.5; }
+    .gateway { fill: #f2e9d7; stroke: #9a6a16; stroke-width: 1.5; }
+    .dependency { fill: #e6f2ec; stroke: #22734d; stroke-width: 1.5; }
+    .reject { fill: #f9e5e4; stroke: #a13d3a; stroke-width: 1.5; }
+    .arrow { stroke: #5b6472; stroke-width: 2; marker-end: url(#arrow); }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#5b6472"/></marker>
+  </defs>
+  <text x="32" y="34" class="heading">E05: six callers against a 500 ms dependency</text>
+
+  <text x="32" y="76" class="label">Direct forwarding</text>
+  <rect x="32" y="94" width="170" height="60" rx="8" class="caller"/><text x="61" y="129" class="label">6 callers</text>
+  <line x1="202" y1="124" x2="350" y2="124" class="arrow"/>
+  <rect x="365" y="94" width="185" height="60" rx="8" class="gateway"/><text x="404" y="129" class="label">Gateway</text>
+  <line x1="550" y1="124" x2="698" y2="124" class="arrow"/>
+  <rect x="713" y="94" width="205" height="60" rx="8" class="dependency"/><text x="742" y="120" class="label">Dependency</text><text x="749" y="141" class="small">6 requests</text>
+  <text x="365" y="179" class="small">Result: 6 × 200; 6 downstream calls</text>
+
+  <text x="32" y="232" class="label">Two permits, no queue</text>
+  <rect x="32" y="250" width="170" height="60" rx="8" class="caller"/><text x="61" y="285" class="label">6 callers</text>
+  <line x1="202" y1="280" x2="350" y2="280" class="arrow"/>
+  <rect x="365" y="250" width="185" height="60" rx="8" class="gateway"/><text x="391" y="276" class="label">2 permits</text><text x="395" y="297" class="small">no queue</text>
+  <line x1="550" y1="280" x2="698" y2="280" class="arrow"/>
+  <rect x="713" y="250" width="205" height="60" rx="8" class="dependency"/><text x="742" y="276" class="label">Dependency</text><text x="749" y="297" class="small">2 requests</text>
+  <line x1="457" y1="250" x2="457" y2="218" class="arrow"/>
+  <rect x="531" y="188" width="168" height="44" rx="8" class="reject"/><text x="562" y="216" class="label">4 × 429</text>
+</svg>
