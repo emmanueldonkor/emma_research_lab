@@ -1,0 +1,30 @@
+{
+  "experiment": "E01-baseline",
+  "run_date": "2026-09-07",
+  "gateway": "http://localhost:5090/proxy/baseline",
+  "dependency": "http://localhost:5091/dependency",
+  "conditions": [
+    {
+      "mode": "Healthy",
+      "dependency_delay_milliseconds": 0,
+      "gateway_status": 200,
+      "gateway_elapsed_milliseconds": 92,
+      "dependency_calls_for_condition": 1
+    },
+    {
+      "mode": "Slow",
+      "dependency_delay_milliseconds": 750,
+      "gateway_status": 200,
+      "gateway_elapsed_milliseconds": 755,
+      "dependency_calls_for_condition": 1
+    },
+    {
+      "mode": "Unavailable",
+      "dependency_delay_milliseconds": 0,
+      "gateway_status": 503,
+      "gateway_elapsed_milliseconds": null,
+      "dependency_calls_for_condition": 1
+    }
+  ],
+  "total_dependency_calls": 3
+}
