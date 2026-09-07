@@ -32,6 +32,24 @@ public sealed class DependencyGateway(IHttpClientFactory clients) : IDependencyG
         return lastResult!;
     }
 
+    public async Task<DependencyCallResult> CallWithTimeoutAsync(CancellationToken cancellationToken)
+    {
+        const int timeoutMilliseconds = 250;
+        var stopwatch = Stopwatch.StartNew();
+        using var timeout = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        timeout.CancelAfter(timeoutMilliseconds);
+
+        try
+        {
+            using var response = await clients.CreateClient("dependency").GetAsync("/dependency", timeout.Token);
+            return new DependencyCallResult((int)response.StatusCode, 1, stopwatch.ElapsedMilliseconds, await response.Content.ReadAsStringAsync(timeout.Token));
+        }
+        catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
+        {
+            return new DependencyCallResult(StatusCodes.Status504GatewayTimeout, 1, stopwatch.ElapsedMilliseconds, Error: $"Dependency attempt exceeded {timeoutMilliseconds} ms.");
+        }
+    }
+
     private async Task<DependencyCallResult> CallOnceAsync(CancellationToken cancellationToken)
     {
         var stopwatch = Stopwatch.StartNew();

@@ -9,6 +9,7 @@ public static class DependencyProxyEndpoints
     {
         endpoints.MapGet("/proxy/baseline", CallBaselineAsync);
         endpoints.MapGet("/proxy/retry", CallRetryAsync);
+        endpoints.MapGet("/proxy/timeout", CallTimeoutAsync);
         return endpoints;
     }
 
@@ -21,6 +22,9 @@ public static class DependencyProxyEndpoints
 
     private static async Task<IResult> CallRetryAsync(IDependencyGateway gateway, CancellationToken cancellationToken) =>
         ToHttpResult(await gateway.CallWithBoundedRetryAsync(cancellationToken), includeAttemptCount: true);
+
+    private static async Task<IResult> CallTimeoutAsync(IDependencyGateway gateway, CancellationToken cancellationToken) =>
+        ToHttpResult(await gateway.CallWithTimeoutAsync(cancellationToken), includeAttemptCount: true);
 
     private static IResult ToHttpResult(DependencyCallResult result, bool includeAttemptCount)
     {

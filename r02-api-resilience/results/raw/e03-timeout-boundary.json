@@ -1,0 +1,10 @@
+{
+  "experiment": "E03-timeout-boundary",
+  "run_date": "2026-09-07",
+  "dependency_delay_milliseconds": 750,
+  "gateway_timeout_milliseconds": 250,
+  "gateway_status": 504,
+  "gateway_elapsed_milliseconds": 269,
+  "gateway_attempt_count": 1,
+  "dependency_calls": 1
+}
