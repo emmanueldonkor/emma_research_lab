@@ -31,3 +31,15 @@ python scripts/e05_concurrent_pressure.py limited
 Each run starts six callers. The limited endpoint uses two permits and no
 queue, so only two callers should reach the dependency while the other four
 receive `429`.
+
+## Behaviour verification
+
+With both services running from a fresh gateway process, run:
+
+```powershell
+python scripts/verify_gateway_behaviour.py
+```
+
+The script checks the documented contracts for baseline forwarding, retry,
+timeout, circuit opening and recovery, and the two-permit limit. It changes
+the dependency mode during the run and leaves it slow at the end.

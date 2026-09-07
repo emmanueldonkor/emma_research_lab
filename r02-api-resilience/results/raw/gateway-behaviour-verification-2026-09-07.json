@@ -1,0 +1,13 @@
+{
+  "verification": "scripts/verify_gateway_behaviour.py",
+  "run_date": "2026-09-07",
+  "result": "passed",
+  "observed": {
+    "baseline": 200,
+    "retry_attempts": 3,
+    "timeout": 504,
+    "circuit_short_circuited": true,
+    "circuit_recovery": 200,
+    "limited_statuses": [200, 200, 429, 429, 429, 429]
+  }
+}
