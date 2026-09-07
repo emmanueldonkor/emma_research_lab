@@ -1,0 +1,59 @@
+{
+  "experiment": "E04-circuit-breaker",
+  "run_date": "2026-09-07",
+  "configuration": {
+    "failure_threshold": 3,
+    "break_duration_milliseconds": 1000,
+    "dependency_mode_before_recovery": "Unavailable"
+  },
+  "failure_calls": [
+    {
+      "gateway_status": 503,
+      "elapsed_milliseconds": 99,
+      "dependency_attempt_count": 1,
+      "dependency_request_number": 1,
+      "circuit": "closed",
+      "consecutive_failures": 1,
+      "short_circuited": false
+    },
+    {
+      "gateway_status": 503,
+      "elapsed_milliseconds": 3,
+      "dependency_attempt_count": 1,
+      "dependency_request_number": 2,
+      "circuit": "closed",
+      "consecutive_failures": 2,
+      "short_circuited": false
+    },
+    {
+      "gateway_status": 503,
+      "elapsed_milliseconds": 2,
+      "dependency_attempt_count": 1,
+      "dependency_request_number": 3,
+      "circuit": "open",
+      "consecutive_failures": 3,
+      "short_circuited": false
+    }
+  ],
+  "call_while_open": {
+    "gateway_status": 503,
+    "elapsed_milliseconds": 0,
+    "dependency_attempt_count": 0,
+    "dependency_request_count_after_call": 3,
+    "circuit": "open",
+    "consecutive_failures": 3,
+    "remaining_break_milliseconds": 977,
+    "short_circuited": true
+  },
+  "recovery": {
+    "dependency_mode": "Healthy",
+    "wait_before_request_milliseconds": 1200,
+    "gateway_status": 200,
+    "elapsed_milliseconds": 2,
+    "dependency_attempt_count": 1,
+    "dependency_request_number": 4,
+    "circuit": "closed",
+    "consecutive_failures": 0,
+    "short_circuited": false
+  }
+}

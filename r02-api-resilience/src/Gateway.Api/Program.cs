@@ -7,6 +7,7 @@ var dependencyBaseUrl = builder.Configuration["Dependency:BaseUrl"]
 
 builder.Services.AddHttpClient("dependency", client => client.BaseAddress = new Uri(dependencyBaseUrl));
 builder.Services.AddScoped<IDependencyGateway, DependencyGateway>();
+builder.Services.AddSingleton<IFailureCircuitBreaker, FailureCircuitBreaker>();
 
 var app = builder.Build();
 app.MapGet("/health", () => Results.Ok(new { status = "ok" }));

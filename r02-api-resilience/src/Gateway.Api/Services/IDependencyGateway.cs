@@ -7,4 +7,6 @@ public interface IDependencyGateway
     Task<DependencyCallResult> CallWithBoundedRetryAsync(CancellationToken cancellationToken);
 
     Task<DependencyCallResult> CallWithTimeoutAsync(CancellationToken cancellationToken);
+
+    Task<CircuitCallResult> CallWithCircuitBreakerAsync(CancellationToken cancellationToken);
 }

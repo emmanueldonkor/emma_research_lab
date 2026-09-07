@@ -2,7 +2,7 @@
 
 ## Status
 
-Setup in progress.
+E01 through E04 have a first recorded local run. E05 remains planned.
 
 ## Question
 

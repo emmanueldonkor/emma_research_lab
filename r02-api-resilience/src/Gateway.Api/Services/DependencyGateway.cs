@@ -2,7 +2,7 @@ using System.Diagnostics;
 
 namespace Gateway.Api.Services;
 
-public sealed class DependencyGateway(IHttpClientFactory clients) : IDependencyGateway
+public sealed class DependencyGateway(IHttpClientFactory clients, IFailureCircuitBreaker circuitBreaker) : IDependencyGateway
 {
     public Task<DependencyCallResult> CallBaselineAsync(CancellationToken cancellationToken) =>
         CallOnceAsync(cancellationToken);
@@ -48,6 +48,22 @@ public sealed class DependencyGateway(IHttpClientFactory clients) : IDependencyG
         {
             return new DependencyCallResult(StatusCodes.Status504GatewayTimeout, 1, stopwatch.ElapsedMilliseconds, Error: $"Dependency attempt exceeded {timeoutMilliseconds} ms.");
         }
+    }
+
+    public async Task<CircuitCallResult> CallWithCircuitBreakerAsync(CancellationToken cancellationToken)
+    {
+        var permit = circuitBreaker.TryAcquire();
+        if (!permit.Allowed)
+        {
+            return new CircuitCallResult(
+                new DependencyCallResult(StatusCodes.Status503ServiceUnavailable, 0, 0, Error: "Circuit is open; dependency call was skipped."),
+                permit.Snapshot,
+                ShortCircuited: true);
+        }
+
+        var result = await CallOnceAsync(cancellationToken);
+        var snapshot = circuitBreaker.RecordOutcome(result.StatusCode < StatusCodes.Status500InternalServerError);
+        return new CircuitCallResult(result, snapshot, ShortCircuited: false);
     }
 
     private async Task<DependencyCallResult> CallOnceAsync(CancellationToken cancellationToken)

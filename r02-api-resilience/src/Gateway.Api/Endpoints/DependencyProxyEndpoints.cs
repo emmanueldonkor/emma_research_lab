@@ -10,6 +10,7 @@ public static class DependencyProxyEndpoints
         endpoints.MapGet("/proxy/baseline", CallBaselineAsync);
         endpoints.MapGet("/proxy/retry", CallRetryAsync);
         endpoints.MapGet("/proxy/timeout", CallTimeoutAsync);
+        endpoints.MapGet("/proxy/circuit", CallCircuitAsync);
         return endpoints;
     }
 
@@ -25,6 +26,24 @@ public static class DependencyProxyEndpoints
 
     private static async Task<IResult> CallTimeoutAsync(IDependencyGateway gateway, CancellationToken cancellationToken) =>
         ToHttpResult(await gateway.CallWithTimeoutAsync(cancellationToken), includeAttemptCount: true);
+
+    private static async Task<IResult> CallCircuitAsync(IDependencyGateway gateway, CancellationToken cancellationToken)
+    {
+        var result = await gateway.CallWithCircuitBreakerAsync(cancellationToken);
+        var call = result.Call;
+        return Results.Json(new
+        {
+            circuit = result.Snapshot.State,
+            consecutiveFailures = result.Snapshot.ConsecutiveFailures,
+            remainingBreakMilliseconds = result.Snapshot.RemainingBreakMilliseconds,
+            shortCircuited = result.ShortCircuited,
+            dependencyStatus = result.ShortCircuited ? (int?)null : call.StatusCode,
+            dependencyAttemptCount = call.AttemptCount,
+            elapsedMilliseconds = call.ElapsedMilliseconds,
+            response = call.Body is null ? (JsonElement?)null : JsonSerializer.Deserialize<JsonElement>(call.Body),
+            error = call.Error
+        }, statusCode: call.StatusCode);
+    }
 
     private static IResult ToHttpResult(DependencyCallResult result, bool includeAttemptCount)
     {
