@@ -2,7 +2,7 @@
 
 ## Status
 
-Core experiments complete; local evidence recorded.
+Five core experiments have recorded local evidence; the broader system questions remain open.
 
 ## Question
 
