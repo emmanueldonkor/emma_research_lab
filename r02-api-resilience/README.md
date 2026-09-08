@@ -52,3 +52,13 @@ To verify the documented behaviours against running local services:
 ```powershell
 python scripts/verify_gateway_behaviour.py
 ```
+
+## Project map
+
+- `src/Dependency.Api/` — controlled downstream service and its state
+- `src/Gateway.Api/` — policy implementations and gateway endpoints
+- `experiments/` — conditions, procedure, and observed outputs for E01–E05
+- `results/raw/` — recorded response-level results
+- `results/tables/` — short comparisons of the recorded results
+- `scripts/` — repeatable pressure and verification runners
+- `diagrams/` — concurrency-limit experiment diagram

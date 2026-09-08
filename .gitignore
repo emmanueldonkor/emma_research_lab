@@ -1,0 +1,13 @@
+# .NET build output
+**/bin/
+**/obj/
+**/TestResults/
+
+# Python environments and bytecode
+**/.venv/
+**/__pycache__/
+**/*.py[cod]
+
+# Local IDE files
+.vs/
+.idea/

@@ -49,3 +49,12 @@ To verify the saved E01-E03 records in the pinned environment:
 ```powershell
 .\.venv\Scripts\python scripts\verify_recorded_runs.py
 ```
+
+## Project map
+
+- `src/r03_eval/` — experiment definitions and environment metadata
+- `scripts/` — raw-result generation and exact-record verification
+- `experiments/` — conditions, procedure, and observed outputs for E01–E04
+- `results/raw/` — versioned JSON records
+- `results/tables/` — short comparisons of the recorded results
+- `diagrams/` — leakage and split-variation diagrams

@@ -24,15 +24,14 @@ public static class DependencyEndpoints
 
     private static async Task<IResult> GetDependencyResponseAsync(DependencyState state, CancellationToken cancellationToken)
     {
-        var requestNumber = state.RecordRequest();
-        var snapshot = state.Snapshot();
+        var snapshot = state.RecordRequestAndSnapshot();
 
         if (snapshot.Mode == DependencyMode.Slow)
         {
             await Task.Delay(snapshot.DelayMilliseconds, cancellationToken);
         }
 
-        var response = new { requestNumber, mode = snapshot.Mode.ToString(), delayMilliseconds = snapshot.DelayMilliseconds };
+        var response = new { requestNumber = snapshot.RequestCount, mode = snapshot.Mode.ToString(), delayMilliseconds = snapshot.DelayMilliseconds };
         return snapshot.Mode == DependencyMode.Unavailable
             ? Results.Json(response, statusCode: StatusCodes.Status503ServiceUnavailable)
             : Results.Ok(response);

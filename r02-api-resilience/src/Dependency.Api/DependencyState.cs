@@ -9,20 +9,39 @@ public enum DependencyMode
 
 public sealed class DependencyState
 {
+    private readonly object sync = new();
     private int requestCount;
     private int delayMilliseconds;
     private DependencyMode mode = DependencyMode.Healthy;
 
     public DependencySnapshot Configure(DependencyMode nextMode, int nextDelayMilliseconds)
     {
-        mode = nextMode;
-        delayMilliseconds = nextDelayMilliseconds;
-        return Snapshot();
+        lock (sync)
+        {
+            mode = nextMode;
+            delayMilliseconds = nextDelayMilliseconds;
+            return SnapshotUnsafe();
+        }
     }
 
-    public int RecordRequest() => Interlocked.Increment(ref requestCount);
+    public DependencySnapshot RecordRequestAndSnapshot()
+    {
+        lock (sync)
+        {
+            requestCount++;
+            return SnapshotUnsafe();
+        }
+    }
 
-    public DependencySnapshot Snapshot() => new(mode, Volatile.Read(ref delayMilliseconds), Volatile.Read(ref requestCount));
+    public DependencySnapshot Snapshot()
+    {
+        lock (sync)
+        {
+            return SnapshotUnsafe();
+        }
+    }
+
+    private DependencySnapshot SnapshotUnsafe() => new(mode, delayMilliseconds, requestCount);
 }
 
 public sealed record DependencySnapshot(DependencyMode Mode, int DelayMilliseconds, int RequestCount);
