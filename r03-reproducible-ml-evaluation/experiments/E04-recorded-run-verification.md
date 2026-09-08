@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Check whether the E01 and E02 JSON records can be regenerated exactly from the
+Check whether the E01, E02, and E03 JSON records can be regenerated exactly from the
 recorded configuration in the pinned local environment.
 
 ## Design
@@ -13,7 +13,7 @@ dataset fingerprint, per-seed metrics, and summary.
 
 ## First recorded verification
 
-On 2026-09-08, the verification script regenerated E01 and E02 with the
+On 2026-09-08, the verification script regenerated E01, E02, and E03 with the
 pinned local environment and found an exact object match for both checked-in
 JSON records. This includes the recorded package versions, fingerprints,
 per-seed metrics, and summaries.

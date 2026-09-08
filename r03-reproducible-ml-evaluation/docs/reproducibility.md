@@ -22,6 +22,7 @@ scikit-learn 1.9.0. Re-run them with:
 ```powershell
 .\.venv\Scripts\python scripts\run_experiments.py e01
 .\.venv\Scripts\python scripts\run_experiments.py e02
+.\.venv\Scripts\python scripts\run_experiments.py e03
 ```
 
 The commands write a raw JSON record under `results/raw/`. The current E01 and

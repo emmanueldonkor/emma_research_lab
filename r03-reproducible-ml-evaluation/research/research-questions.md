@@ -13,5 +13,10 @@ training partition only?
 
 ## Q03
 
+How different can a single fixed train/test split look from the distribution
+across several fixed splits of the same safe pipeline?
+
+## Q04
+
 Which pieces of run metadata are sufficient to regenerate the recorded
 experiment output on the same dependency versions?

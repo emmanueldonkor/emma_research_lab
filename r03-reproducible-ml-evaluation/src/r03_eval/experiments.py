@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from statistics import mean
+from statistics import mean, pstdev
 
 import numpy as np
 from sklearn.datasets import load_breast_cancer
@@ -21,24 +21,7 @@ def reference_pipeline_run() -> dict[str, object]:
     dataset = load_breast_cancer()
     features = np.asarray(dataset.data)
     target = np.asarray(dataset.target)
-    per_seed = []
-
-    for split_seed in SPLIT_SEEDS:
-        train_features, test_features, train_target, test_target = train_test_split(
-            features, target, test_size=TEST_SIZE, stratify=target, random_state=split_seed
-        )
-        model = make_pipeline(
-            StandardScaler(),
-            LogisticRegression(max_iter=2_000, random_state=0),
-        )
-        model.fit(train_features, train_target)
-        prediction = model.predict(test_features)
-        per_seed.append({
-            "split_seed": split_seed,
-            "accuracy": accuracy_score(test_target, prediction),
-            "balanced_accuracy": balanced_accuracy_score(test_target, prediction),
-            "f1": f1_score(test_target, prediction),
-        })
+    per_seed = _evaluate_reference_pipeline(features, target, SPLIT_SEEDS)
 
     return {
         "experiment": "E01-reference-pipeline",
@@ -56,6 +39,38 @@ def reference_pipeline_run() -> dict[str, object]:
         "environment": environment(),
         "per_seed": per_seed,
         "summary": _metric_summary(per_seed),
+    }
+
+
+def split_variation_run() -> dict[str, object]:
+    split_seeds = tuple(range(1, 31))
+    dataset = load_breast_cancer()
+    features = np.asarray(dataset.data)
+    target = np.asarray(dataset.target)
+    per_seed = _evaluate_reference_pipeline(features, target, split_seeds)
+    best = max(per_seed, key=lambda row: float(row["accuracy"]))
+    summary = _metric_summary(per_seed)
+    summary["accuracy_population_standard_deviation"] = pstdev(float(row["accuracy"]) for row in per_seed)
+    summary["accuracy_minimum"] = min(float(row["accuracy"]) for row in per_seed)
+    summary["accuracy_maximum"] = max(float(row["accuracy"]) for row in per_seed)
+    summary["best_minus_mean_accuracy"] = float(best["accuracy"]) - summary["accuracy_mean"]
+
+    return {
+        "experiment": "E03-split-variation",
+        "configuration": {
+            "split_seeds": list(split_seeds),
+            "test_size": TEST_SIZE,
+            "model": "StandardScaler + LogisticRegression(max_iter=2000, random_state=0)",
+        },
+        "dataset": {
+            "source": "sklearn.datasets.load_breast_cancer",
+            "shape": list(features.shape),
+            "fingerprint_sha256": fingerprint(features, target),
+        },
+        "environment": environment(),
+        "per_seed": per_seed,
+        "highest_individual_accuracy": best,
+        "summary": summary,
     }
 
 
@@ -124,3 +139,26 @@ def _metric_summary(per_seed: list[dict[str, object]]) -> dict[str, float]:
         f"{metric}_mean": mean(float(row[metric]) for row in per_seed)
         for metric in ("accuracy", "balanced_accuracy", "f1")
     }
+
+
+def _evaluate_reference_pipeline(
+    features: np.ndarray, target: np.ndarray, split_seeds: tuple[int, ...]
+) -> list[dict[str, object]]:
+    per_seed = []
+    for split_seed in split_seeds:
+        train_features, test_features, train_target, test_target = train_test_split(
+            features, target, test_size=TEST_SIZE, stratify=target, random_state=split_seed
+        )
+        model = make_pipeline(
+            StandardScaler(),
+            LogisticRegression(max_iter=2_000, random_state=0),
+        )
+        model.fit(train_features, train_target)
+        prediction = model.predict(test_features)
+        per_seed.append({
+            "split_seed": split_seed,
+            "accuracy": accuracy_score(test_target, prediction),
+            "balanced_accuracy": balanced_accuracy_score(test_target, prediction),
+            "f1": f1_score(test_target, prediction),
+        })
+    return per_seed

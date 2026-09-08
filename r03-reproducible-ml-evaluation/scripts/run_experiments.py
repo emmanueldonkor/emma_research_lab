@@ -9,17 +9,22 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from r03_eval.experiments import feature_selection_leakage_run, reference_pipeline_run
+from r03_eval.experiments import feature_selection_leakage_run, reference_pipeline_run, split_variation_run
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run an R03 experiment and save its raw result.")
-    parser.add_argument("experiment", choices=("e01", "e02"))
+    parser.add_argument("experiment", choices=("e01", "e02", "e03"))
     parser.add_argument("--output", type=Path, help="Path for the JSON result. Defaults to results/raw.")
     arguments = parser.parse_args()
 
-    result = reference_pipeline_run() if arguments.experiment == "e01" else feature_selection_leakage_run()
-    default_name = "e01-reference-pipeline" if arguments.experiment == "e01" else "e02-feature-selection-leakage"
+    runners = {
+        "e01": ("e01-reference-pipeline", reference_pipeline_run),
+        "e02": ("e02-feature-selection-leakage", feature_selection_leakage_run),
+        "e03": ("e03-split-variation", split_variation_run),
+    }
+    default_name, run = runners[arguments.experiment]
+    result = run()
     output = arguments.output or ROOT / "results" / "raw" / f"{default_name}-{date.today().isoformat()}.json"
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")

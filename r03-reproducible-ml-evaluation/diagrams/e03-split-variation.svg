@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="270" viewBox="0 0 840 270" role="img" aria-labelledby="title desc">
+  <title id="title">E03 accuracy variation across 30 fixed splits</title>
+  <desc id="desc">The minimum accuracy was 0.958, the mean was 0.978, and the maximum was 0.993.</desc>
+  <style>
+    .title { font: 700 22px system-ui, sans-serif; fill: #172033; }
+    .label { font: 600 15px system-ui, sans-serif; fill: #172033; }
+    .text { font: 14px system-ui, sans-serif; fill: #465368; }
+    .axis { stroke: #8290a5; stroke-width: 1; }
+    .range { stroke: #315b93; stroke-width: 10; stroke-linecap: round; }
+    .mean { fill: #b6504b; }
+  </style>
+  <text x="40" y="38" class="title">E03: accuracy across 30 fixed splits</text>
+  <text x="40" y="63" class="text">Same safe pipeline, same dataset, different predefined train/test partitions</text>
+  <line x1="130" y1="187" x2="750" y2="187" class="axis"/>
+  <text x="111" y="212" class="text">0.94</text><text x="345" y="212" class="text">0.97</text><text x="684" y="212" class="text">1.00</text>
+  <line x1="316" y1="137" x2="678" y2="137" class="range"/>
+  <circle cx="526" cy="137" r="11" class="mean"/>
+  <text x="288" y="113" class="label">min 0.958</text><text x="482" y="113" class="label">mean 0.978</text><text x="642" y="113" class="label">max 0.993</text>
+  <text x="296" y="245" class="text">The best split is 0.015 above the mean.</text>
+</svg>
