@@ -22,7 +22,7 @@ The second dataset exists to make leakage visible under controlled conditions.
 This project does not make medical or deployment claims from the breast-cancer
 dataset.
 
-## Planned experiments
+## Experiments and records
 
 1. E01 - repeat a correctly split and pipelined reference evaluation across
    fixed seeds.
@@ -32,10 +32,20 @@ dataset.
 4. E04 - verify that a recorded run can be regenerated from its configuration,
    environment, and dataset fingerprint.
 
+Read the [first-run findings](research/findings.md) for the comparison across
+all four experiments. Raw JSON is in `results/raw/`, summary tables are in
+`results/tables/`, and the runnable checks are in `scripts/`.
+
 ## Local setup
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python -m pip install -r requirements.txt
 .\.venv\Scripts\python scripts\run_experiments.py --help
+```
+
+To verify the saved E01-E03 records in the pinned environment:
+
+```powershell
+.\.venv\Scripts\python scripts\verify_recorded_runs.py
 ```
