@@ -1,0 +1,68 @@
+{
+  "experiment": "E01-reference-pipeline",
+  "configuration": {
+    "split_seeds": [
+      11,
+      23,
+      37,
+      41,
+      59
+    ],
+    "test_size": 0.25,
+    "model": "StandardScaler + LogisticRegression(max_iter=2000, random_state=0)"
+  },
+  "dataset": {
+    "source": "sklearn.datasets.load_breast_cancer",
+    "shape": [
+      569,
+      30
+    ],
+    "target_names": [
+      "malignant",
+      "benign"
+    ],
+    "fingerprint_sha256": "25e2eb7b7a8745b1bde5ba18bc4969983d2e2f403291ecd5bde4a29ef30c3859"
+  },
+  "environment": {
+    "python": "3.13.12",
+    "numpy": "2.3.0",
+    "scikit-learn": "1.9.0"
+  },
+  "per_seed": [
+    {
+      "split_seed": 11,
+      "accuracy": 0.958041958041958,
+      "balanced_accuracy": 0.9472746331236898,
+      "f1": 0.967391304347826
+    },
+    {
+      "split_seed": 23,
+      "accuracy": 0.986013986013986,
+      "balanced_accuracy": 0.9811320754716981,
+      "f1": 0.989010989010989
+    },
+    {
+      "split_seed": 37,
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "f1": 1.0
+    },
+    {
+      "split_seed": 41,
+      "accuracy": 0.9790209790209791,
+      "balanced_accuracy": 0.9716981132075472,
+      "f1": 0.9836065573770492
+    },
+    {
+      "split_seed": 59,
+      "accuracy": 0.972027972027972,
+      "balanced_accuracy": 0.9738993710691823,
+      "f1": 0.9775280898876404
+    }
+  ],
+  "summary": {
+    "accuracy_mean": 0.9790209790209791,
+    "balanced_accuracy_mean": 0.9748008385744235,
+    "f1_mean": 0.983507388124701
+  }
+}

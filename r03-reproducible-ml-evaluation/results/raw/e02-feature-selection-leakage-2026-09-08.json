@@ -1,0 +1,74 @@
+{
+  "experiment": "E02-feature-selection-leakage",
+  "configuration": {
+    "dataset_seed": 20260908,
+    "samples": 200,
+    "features": 10000,
+    "selected_features": 25,
+    "split_seeds": [
+      11,
+      23,
+      37,
+      41,
+      59
+    ],
+    "test_size": 0.25,
+    "model": "LogisticRegression(max_iter=2000, random_state=0)"
+  },
+  "dataset": {
+    "source": "locally generated random features and random binary labels",
+    "shape": [
+      200,
+      10000
+    ],
+    "fingerprint_sha256": "b0ccad48c69871225277a197d63f0a0416ee61205985322698134f43fab717ee"
+  },
+  "environment": {
+    "python": "3.13.12",
+    "numpy": "2.3.0",
+    "scikit-learn": "1.9.0"
+  },
+  "per_seed": [
+    {
+      "split_seed": 11,
+      "flawed_accuracy": 0.86,
+      "safe_accuracy": 0.54,
+      "flawed_balanced_accuracy": 0.8621794871794872,
+      "safe_balanced_accuracy": 0.5400641025641025
+    },
+    {
+      "split_seed": 23,
+      "flawed_accuracy": 0.9,
+      "safe_accuracy": 0.5,
+      "flawed_balanced_accuracy": 0.9038461538461539,
+      "safe_balanced_accuracy": 0.4951923076923077
+    },
+    {
+      "split_seed": 37,
+      "flawed_accuracy": 0.8,
+      "safe_accuracy": 0.5,
+      "flawed_balanced_accuracy": 0.8012820512820513,
+      "safe_balanced_accuracy": 0.4951923076923077
+    },
+    {
+      "split_seed": 41,
+      "flawed_accuracy": 0.82,
+      "safe_accuracy": 0.6,
+      "flawed_balanced_accuracy": 0.8200000000000001,
+      "safe_balanced_accuracy": 0.6000000000000001
+    },
+    {
+      "split_seed": 59,
+      "flawed_accuracy": 0.82,
+      "safe_accuracy": 0.58,
+      "flawed_balanced_accuracy": 0.8189102564102564,
+      "safe_balanced_accuracy": 0.5801282051282051
+    }
+  ],
+  "summary": {
+    "flawed_accuracy_mean": 0.84,
+    "safe_accuracy_mean": 0.544,
+    "flawed_balanced_accuracy_mean": 0.8412435897435898,
+    "safe_balanced_accuracy_mean": 0.5421153846153847
+  }
+}

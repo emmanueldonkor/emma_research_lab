@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="390" viewBox="0 0 840 390" role="img" aria-labelledby="title desc">
+  <title id="title">E02 leaked and safe evaluation paths</title>
+  <desc id="desc">Feature selection on all data produces mean accuracy 0.840 on random-label data, while feature selection fitted in a training pipeline produces 0.544.</desc>
+  <style>
+    .title { font: 700 22px system-ui, sans-serif; fill: #172033; }
+    .label { font: 600 15px system-ui, sans-serif; fill: #172033; }
+    .text { font: 14px system-ui, sans-serif; fill: #465368; }
+    .axis { stroke: #8290a5; stroke-width: 1; }
+    .leaked { fill: #b6504b; }
+    .safe { fill: #2b7a5a; }
+  </style>
+  <text x="38" y="38" class="title">E02: feature selection on random-label data</text>
+  <text x="38" y="64" class="text">Mean held-out accuracy across five fixed split seeds</text>
+  <line x1="170" y1="310" x2="780" y2="310" class="axis"/>
+  <line x1="170" y1="95" x2="170" y2="310" class="axis"/>
+  <text x="142" y="314" class="text">0.0</text><text x="142" y="207" class="text">0.5</text><text x="142" y="101" class="text">1.0</text>
+  <line x1="165" y1="203" x2="780" y2="203" class="axis" stroke-dasharray="4 5"/>
+  <rect x="275" y="129" width="150" height="181" rx="5" class="leaked"/>
+  <rect x="545" y="193" width="150" height="117" rx="5" class="safe"/>
+  <text x="313" y="120" class="label">0.840</text><text x="583" y="184" class="label">0.544</text>
+  <text x="263" y="338" class="label">Leaked path</text><text x="522" y="338" class="label">Safe pipeline</text>
+  <text x="226" y="363" class="text">selector fitted before split</text><text x="515" y="363" class="text">selector fitted on training data</text>
+</svg>

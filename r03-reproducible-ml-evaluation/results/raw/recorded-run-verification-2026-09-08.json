@@ -1,0 +1,12 @@
+{
+  "verification": [
+    {
+      "record": "e01-reference-pipeline-2026-09-08.json",
+      "result": "exact match"
+    },
+    {
+      "record": "e02-feature-selection-leakage-2026-09-08.json",
+      "result": "exact match"
+    }
+  ]
+}
