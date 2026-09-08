@@ -29,6 +29,6 @@ public static class OutboxWorkflowEndpoints
             : Results.StatusCode(StatusCodes.Status503ServiceUnavailable);
     }
 
-    private static async Task<IResult> ListAsync(bool includePublished, IOutboxWorkflowService workflows, CancellationToken cancellationToken) =>
+    private static async Task<IResult> ListAsync(IOutboxWorkflowService workflows, CancellationToken cancellationToken, bool includePublished = false) =>
         Results.Ok(await workflows.ListAsync(includePublished, cancellationToken));
 }
