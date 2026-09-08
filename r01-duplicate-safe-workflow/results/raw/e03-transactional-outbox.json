@@ -1,10 +1,10 @@
 {
   "experiment": "E03-transactional-outbox",
-  "run_date": "2026-09-06",
+  "run_date": "2026-09-08",
   "committed_request": {
     "name": "contract-renewal",
-    "workflow_id": "268d5e42-8e84-49c5-9acc-cc480f9e3b4c",
-    "outbox_message_id": "17b4f594-70eb-4723-9b07-13a236037547",
+    "workflow_id": "96e05e28-f216-4d05-8b12-d57f89cf0933",
+    "outbox_message_id": "15e5ad6d-59c4-4758-bc21-d7781380b9ff",
     "status": 201
   },
   "after_commit": {

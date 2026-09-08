@@ -1,10 +1,10 @@
 {
   "experiment": "E05-outbox-retry",
-  "run_date": "2026-09-06",
+  "run_date": "2026-09-08",
   "target": {
     "workflow_name": "retryable-notification",
-    "workflow_id": "5937837c-9765-40fb-a56e-7718b1361241",
-    "outbox_message_id": "13064284-c14f-4202-9101-f74da75cc16f"
+    "workflow_id": "59ffa630-fe89-4503-bdaf-8f0ff25d589d",
+    "outbox_message_id": "fba3b14a-1c19-4544-89d1-215f916c7912"
   },
   "failure_dispatch": {
     "pending_messages_processed": 2,
@@ -18,7 +18,7 @@
     "pending_messages_processed": 2,
     "published": 2,
     "failed": 0,
-    "target_published_at_utc": "2026-09-06T18:58:09.168073+00:00",
+    "target_published_at_utc": "2026-09-08T17:42:54.943573+00:00",
     "target_delivery_attempts": 2,
     "target_last_error": null
   }
