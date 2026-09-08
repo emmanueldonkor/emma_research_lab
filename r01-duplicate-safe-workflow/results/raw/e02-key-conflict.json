@@ -1,6 +1,6 @@
 {
   "experiment": "E02-idempotency-key",
-  "run_date": "2026-09-06",
+  "run_date": "2026-09-08",
   "idempotency_key": "e02-monthly-invoice-001",
   "original_request_name": "monthly-invoice",
   "conflicting_request_name": "different-invoice",
