@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Run date | 2026-09-06 |
+| Run date | 2026-09-08 |
 | Target message | `workflow.created.v1` for `retryable-notification` |
 | First dispatch | Controlled failure |
 | State after failure | Pending, attempt 1, error recorded |

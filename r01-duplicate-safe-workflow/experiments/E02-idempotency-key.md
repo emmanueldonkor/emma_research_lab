@@ -31,7 +31,7 @@ The database primary key on `idempotency_records.Key` is the concurrency guard. 
 
 ## First recorded run
 
-On 2026-09-06, the runner submitted `monthly-invoice` five times sequentially with the same key, `e02-monthly-invoice-001`.
+On 2026-09-08, the runner submitted `monthly-invoice` five times sequentially with the same key, `e02-monthly-invoice-001`.
 
 | Measure | Observed value |
 | --- | --- |

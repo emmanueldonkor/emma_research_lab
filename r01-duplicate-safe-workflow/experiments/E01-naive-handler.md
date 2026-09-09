@@ -26,7 +26,7 @@ This is intentional. The expected outcome is that replaying the same logical req
 
 ## First recorded run
 
-On 2026-09-06, the runner submitted `weekly-report` five times sequentially to the local API.
+On 2026-09-08, the runner submitted `weekly-report` five times sequentially to the local API.
 
 | Measure | Observed value |
 | --- | --- |

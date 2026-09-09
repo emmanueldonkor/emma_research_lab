@@ -21,7 +21,7 @@ The `simulateRollback` request option is a controlled test hook: it saves both r
 
 ## First recorded run
 
-On 2026-09-06, the committed request produced one workflow and one pending outbox message. The controlled rollback returned `503`; afterward, no workflow or outbox message for `rollback-check` existed.
+On 2026-09-08, the committed request produced one workflow and one pending outbox message. The controlled rollback returned `503`; afterward, no workflow or outbox message for `rollback-check` existed.
 
 | Measure | Observed value |
 | --- | --- |

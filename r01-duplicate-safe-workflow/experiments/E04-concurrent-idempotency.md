@@ -26,7 +26,7 @@ The expected safe outcome is one `201 Created`, later `200 OK` responses, and ex
 
 ## First recorded run
 
-On 2026-09-06, 20 worker threads submitted `concurrent-settlement` together with one generated idempotency key.
+On 2026-09-08, 20 worker threads submitted `concurrent-settlement` together with one generated idempotency key.
 
 | Measure | Observed value |
 | --- | --- |

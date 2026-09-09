@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Run date | 2026-09-06 |
+| Run date | 2026-09-08 |
 | Runner | `scripts/e01_naive_duplicate_request.py` |
 | Request name | `weekly-report` |
 | Sequential submissions | 5 |
